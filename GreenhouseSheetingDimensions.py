@@ -1,4 +1,4 @@
-from math import pi
+from math import pi, ceil
 import turtle
 import sys
 t = turtle.Pen()
@@ -25,22 +25,21 @@ t.fd(1000)
 print ''
 print ''
 print ''
-print 'WELCOME TO THE BEST PROGRAM EVER 2'
-print 'TODAY WE WILL BE FINDING THE DIMENSIONS OF THE SHEET\nTHAT YOU WILL NEED TO COVER YOUR GREENHOUSE'
+print 'WELCOME TO THE BEST PROGRAM EVER v2'
+print 'TODAY WE WILL BE FINDING THE DIMENSIONS OF THE PLATIC SHEET\nTHAT YOU WILL NEED TO COVER YOUR GREENHOUSE'
 print 'THE DRAWING REPRESENTS THE GREENHOUSE'
-print 'PLEASE INPUT VALUES IN FEET'
 print ''
 try:
-    x = int(raw_input('PLEASE INPUT THE LENGTH OF THE RED SEGMENT OF YOUR GREENHOUSE: '))
-    y = int(raw_input('PLEASE INPUT THE LENGTH OF THE BLUE SEGMENT OF YOUR GREENHOUSE: '))
-    z = int(raw_input('PLEASE INPUT THE LENGTH OF THE GREEN SEGMENT OF YOUR GREENHOUSE: '))
+    x = int(raw_input('PLEASE INPUT THE LENGTH OF THE RED SEGMENT OF YOUR GREENHOUSE(IN INCHES): '))
+    y = int(raw_input('PLEASE INPUT THE LENGTH OF THE BLUE SEGMENT OF YOUR GREENHOUSE(IN FEET): '))
+    z = int(raw_input('PLEASE INPUT THE LENGTH OF THE GREEN SEGMENT OF YOUR GREENHOUSE(IN FEET): '))
 except ValueError:
     print ''
     print 'TRY AGAIN. THE NUMBER YOU INPUTTED WAS WRONG'
     sys.exit()
-length = float(2 + 2 * x + y + z)
-width = float(2 + 2 * x  + .5 * y * pi)
+length = ceil(float(2 + 2 * (x/12) + y + z) / 5) * 5
+width = ceil(float(2 + 2 * (x/12)  + .5 * y * pi) / 5) * 5
 print ''
 print ''
 print ''
-print 'You will need a ' + str(round(length, 2)) + '\" by ' + str(round(width, 2)) + '\" sheet to sheet your greenhouse.'
+print 'You will need a ' + str(int(length)) + '\' by ' + str(int(width)) + '\' sheet to sheet your greenhouse.'
