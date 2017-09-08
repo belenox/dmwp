@@ -198,3 +198,22 @@ def read_csv(filename):
 if __name__ == '__main__':
     numbers, squared = read_csv('numbers.csv')
     scatterplot(numbers, squared)
+
+def read_csv(filename):
+    with open(filename) as f:
+        reader = csv.reader(f)
+        next(reader)
+
+        summer = []
+        highest_correlated = []
+        for row in reader:
+            summer.append(float(row[0]))
+            highest_correlated.append(float(row[1]))
+
+        return summer, highest_correlated
+
+if __name__ == '__main__':
+    summer, highest_correlated = read_csv('numbers.csv')
+    corr = findcorrxy(summer, highest_correlated)
+    print 'Highest correlation: {0}'.format(corr)
+    scatterplot(summer, highest_correlated)
